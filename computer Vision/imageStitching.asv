@@ -1,0 +1,33 @@
+A=imread('D:\Program Files\matlab\toolbox\images\imdemos\cameraman.tif');
+[m,n]=size(A);
+
+a=zeros(m,n*2+10,class(X));
+for i=1:n       %copying the first image onto matrix a
+    a(:,i)=A(:,i);
+    
+end
+for i=1:n       %copying the second image onto matrix a
+    a(:,n+10+i)=A(:,i);
+    
+end
+for i=1 :m      %generating the extra pixels in between
+    l=A(i,n);
+    r=A(i,1);
+    if(l>r)          %if the left pixel is lighter ( higher value )
+        diff=l-r;       %than the right pixel 
+        step=diff/10;
+        for j=1:10
+            a(i,n+j)=l;    
+            l=l-step;    %pixels get darker
+        end
+    else
+        diff=r-l;    %if the right pixel is lighter ( higher value )
+        step=diff/10;   %than the left pixel 
+        for j=1:10
+            a(i,n+j)=l;
+            l=l+step;    %pixels get lighter
+        end
+    end
+end
+
+imshow(a);

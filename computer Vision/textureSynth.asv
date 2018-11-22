@@ -1,0 +1,48 @@
+Y=imread('C:\Users\Anand\Downloads\flowers.jpg');
+Y=rgb2gray(Y);
+[m,n]=size(Y);
+Z= zeros(m*2,n*2,class(Y));
+column_inc=0;
+row_inc=0;
+
+
+for i=1:n       %copying the first image onto matrix a
+    Z(1:m,i)=Y(:,i);
+end
+
+   %copying the last column of the image onto X
+for i=1:n      %searching for the column  
+    if (Y(:,n)==Y(:,i))
+        for j=i:n
+            Z(1:m,n+j-i+1)=Y(:,j);
+            column_inc=column_inc+1;
+        end
+        break
+    end
+end
+for i=1:n      %searching for the row 
+    if (Y(m,:)==Y(i,:))
+        for j=i:m
+            Z(m+j-i+1,1:n)=Y(j,:);
+             row_inc=row_inc+1;
+            
+        end
+        break
+    end
+end
+row_final=m+row_inc;
+column_final=n+coloumn_inc;
+
+for i=n:coloumn_final     %stitching the fourth image  
+    if (Y(:,n)==Y(:,i))
+        for j=i:n
+            Z(m:m,n+j-i+1)=Y(:,j);
+            
+        end
+        break
+    end
+end
+imshow(Z);
+
+
+            

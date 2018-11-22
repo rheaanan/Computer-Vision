@@ -1,0 +1,5 @@
+n=11;
+u=linspace(0.2*pi,n);
+v=cos(u);
+X label('u'),Y label ('v');title('cosine graph');
+plot(u,v)

@@ -1,0 +1,22 @@
+Y=imread('D:\Program Files\matlab\toolbox\images\imdemos\cameraman.tif');
+
+[m,n]=size(Y);
+%imshow(Y);
+
+for i=1:n/2
+    temp=Y(i,:);
+    Y(j,:)=Y(n-i+1,:);
+	Y(n-j+1,:)=temp;
+    j=j+1;
+end
+imshow(Y);
+
+
+
+
+
+
+
+
+
+
